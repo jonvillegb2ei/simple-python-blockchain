@@ -1,6 +1,6 @@
 from blockchain import Blockchain
 from entry import Entry
-import random
+import time
 
 
 class TestProductEntry(Entry):
@@ -24,14 +24,11 @@ class TestProductEntry(Entry):
 
 
 difficulty = 4
-
 block_size = 10
-
-
 blockchain = Blockchain(difficulty, block_size)
 
 for i in range(123):
-    entry = TestProductEntry('60125-0-%s-1' % i, 'SCHNEIDER', random.uniform(0, 100))
+    entry = TestProductEntry('60125-0-%s-1' % i, 'Employee name', int(time.time() - 1500000 + (3600 * i)))
     print(' [+] Add entry %s' % entry.get_hash())
     blockchain.add_entry(entry)
 
